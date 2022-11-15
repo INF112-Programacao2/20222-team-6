@@ -1,5 +1,7 @@
-#include <iostream>
-#include "Game.cpp"
+
+#include "Game.h"
+#include "Personagens.h"
+
 
 int main()
 {
@@ -8,13 +10,7 @@ int main()
 
     // Loop do jogo
 
-    while (jogo.running())
-    {
-        // Load
-        jogo.update();
-        // Render
-        jogo.render();
-    }
+    jogo.run();
 
     return 0;
-}
+    }

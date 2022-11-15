@@ -1,0 +1,3 @@
+/home/pedro/Pictures/rpg-game/cmake-build-debug/CMakeFiles/rpg_game.dir
+/home/pedro/Pictures/rpg-game/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/pedro/Pictures/rpg-game/cmake-build-debug/CMakeFiles/rebuild_cache.dir

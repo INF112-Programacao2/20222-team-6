@@ -1,10 +1,11 @@
 #include "Game.h"
-
+#include "Personagens.h"
 
 // Funcoes privadas
 void Game::initVariaveis()
 {
     this-> window = nullptr;
+    heroi = new Personagens(sendStatus());
 
 }
 
@@ -12,7 +13,8 @@ void Game::initWindow()
 {
     this-> videoMode.height = 720;
     this-> videoMode.width = 1280;
-    this-> window = new sf::RenderWindow(this-> videoMode, "Game", sf::Style::Titlebar | sf::Style::Close | sf::Style::Resize);
+    this-> window = new sf::RenderWindow(this-> videoMode, "Jogo muito foda", sf::Style::Titlebar | sf::Style::Close | sf::Style::Resize);
+    this-> window->setFramerateLimit(60);
 }
 
 // Construtor
@@ -20,54 +22,61 @@ Game::Game()
 {
     this-> initVariaveis();
     this-> initWindow();
-
-
 }
-
 // Destrutor
 Game::~Game()
 {
     delete this-> window;
 }
-
 // Funcoes
-
-const bool Game::running() const
+sf::Event Game::getEvent()
 {
-    return this-> window-> isOpen();
+    return e;
 }
 
-void Game::pollEvents()
+void Game::checkIfPressed()
 {
-    while (this-> window-> pollEvent(this->ev))
-    {
-        switch (this->ev.type)
-        {
-            case sf::Event::Closed:
-                this-> window->close();
-                break;
-            case sf::Event::KeyPressed:
-                if (this-> ev.key.code == sf::Keyboard::Escape)
-                    this ->window->close();
-                break;
+    
+        if (e.Event::KeyPressed && e.Event::key.code == sf::Keyboard::W){
+            teclas[0] = 1;
+            timer += 1.f;}
+        else {teclas[0] = 0; timer = 0;}
+        if (e.Event::KeyPressed && e.Event::key.code == sf::Keyboard::A){
+            teclas[1] = 1;
+            timer += 1.f;}
+        else {teclas[1] = 0; timer = 0;}
+        if (e.Event::KeyPressed && e.Event::key.code == sf::Keyboard::S){
+            teclas[2] = 1;
+            timer += 1.f;}
+        else {teclas[2] = 0; timer = 0;}
+        if (e.Event::KeyPressed && e.Event::key.code == sf::Keyboard::D){
+            teclas[3] = 1;
+            timer += 1.f;}
+        else {teclas[3] = 0; timer = 0;}
+    
+}
 
-        }
+
+void Game::run()
+{
+    while(this->window->isOpen())
+    {
+        this-> update();
     }
 }
 
 void Game::update()
 {
-    this-> pollEvents();
+    while (this->window->pollEvent(e))
+    {
+        if (e.Event::type == sf::Event::Closed)
+            this-> window->close();
+        if (e.Event::KeyPressed && e.Event::key.code == sf::Keyboard::Escape)
+            this-> window->close();
+        this->checkIfPressed();
+        heroi->movement();
+        this->window->clear();
+        this->window->draw(heroi->personagemS);
+        this->window->display();
+    }
 }
-
-void Game::render()
-{
-/*
-    Renderiza o jogo
-*/
-
-    this->window->clear(sf::Color(0,0,255));
-
-    this->window->display();
-}
-
