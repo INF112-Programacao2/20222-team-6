@@ -1,20 +1,11 @@
-#include <iostream>
-#include "Game.cpp"
+#include "Menu.h"
 
-int main()
-{
-    // Inicia jogo
-    Game jogo;
+int main(){
+    Menu *abs = new Menu();
 
-    // Loop do jogo
+    abs->run_menu();
 
-    while (jogo.running())
-    {
-        // Load
-        jogo.update();
-        // Render
-        jogo.render();
-    }
+    delete abs;
 
     return 0;
 }
