@@ -3,16 +3,17 @@
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include "Game.h"
 
 
 class Menu
 { 
-    private:
+    protected:
     
         int _pos;
         bool _select, _click_enter;
+        bool run = false;
 
-        sf::RenderWindow *_tela;
         sf::Texture *imageT;
         sf::Sprite *imgS;
         sf::Font *font;
@@ -23,15 +24,22 @@ class Menu
         std::vector<sf::Text> _texts;
         std::vector<std::size_t> _sizes;
 
+        sf::Event loop;
+
+
+
     public:
         Menu();
         ~Menu();
-        void run_menu();
-        void init_variaveis();
-        void loop_events();
-        void draw_menu();
-        void init_variables_first_menu();
-        void init_variables_second_menu();
+
+        
+        sf::Event get_event();
+        //void run();
+        //void init_variables();
+        //void loop();
+        //void draw();
+        //void init_variables_first_menu();
+        //void init_variables_second_menu();
 };
 
 
