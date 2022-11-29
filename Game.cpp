@@ -1,12 +1,14 @@
 #include "Game.h"
 #include "Personagens.h"
+#include "main_menu.h"
 
 // Funcoes privadas
 void Game::initVariaveis()
 {
     this-> window = nullptr;
     heroi = new Personagens(sendStatus());
-
+    teste = new MainMenu();
+    running = true;
 }
 
 void Game::initWindow()
@@ -67,12 +69,20 @@ void Game::run()
 
 void Game::update()
 {
+
     while (this->window->pollEvent(e))
     {
+
         if (e.Event::type == sf::Event::Closed)
             this-> window->close();
         if (e.Event::KeyPressed && e.Event::key.code == sf::Keyboard::Escape)
             this-> window->close();
+        
+        while(running)
+        {
+            teste->menu_update(this->window, running);
+            teste->menu_draw(this->window);
+        }
         this->checkIfPressed();
         heroi->movement();
         this->window->clear();

@@ -8,6 +8,8 @@
 #include <SFML/Network.hpp>
 #include "Personagens.h"
 #include "globalParameters.h"
+#include "Menu.h"
+#include "main_menu.h"
 
 /*
     Essa classe representa a game engine.
@@ -15,29 +17,31 @@
 
 class Personagens;
 
-class Game
+class Game : public Menu
 {
     private:
         // Variaveis
         Personagens* heroi;
         float timer;
-        // Window
-        sf::RenderWindow* window;
+        bool running;
+        //Window
         sf::VideoMode videoMode;
-
+        sf::RenderWindow* window;
+        void initWindow();
         // Events
         sf::Event e;
         
         // Objetos do jogo
-
+        MainMenu *teste;
         
         // Funcoes privadas
         void initVariaveis();
-        void initWindow();
         void initInimigos();
         void spriteMovement();
         void isMoving();
-    
+
+    protected:
+
     public:
         // Contrutor e destrutor;
         Game();
