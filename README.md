@@ -6,7 +6,6 @@
 </p>
 </div>
 <h2>Integrantes</h2>
-<h3><a href="https://github.com/RobertGonzaga">Robert Gonzaga</h3>
 <h3><a href="https://github.com/pedro-lucas-martins">Pedro Lucas</h3>
 <h3><a href="https://github.com/ojuans">Juan Santos</h3>
 <h3><a href="https://github.com/Pedrohbcarvalho">Pedro Henrique</h3>
