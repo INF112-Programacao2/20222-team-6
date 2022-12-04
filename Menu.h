@@ -12,9 +12,6 @@ class Menu
         int _pos;
         bool _select, _click_enter;
 
-        bool event;
-        int cont;
-
         sf::Texture *imageT;
         sf::Sprite *imgS;
         sf::Font *font;

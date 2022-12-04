@@ -2,6 +2,7 @@
 #define MAIN_MENU_H
 
 #include "Menu.h"
+#include "LeitorDeDados.h"
 #include <iostream>
 
 class MainMenu : public Menu
@@ -10,7 +11,6 @@ class MainMenu : public Menu
         MainMenu();
         ~MainMenu();
         void init_variables();
-        void init_second_variables();
         void menu_update(sf::RenderWindow *janela, bool &running);
         void menu_draw(sf::RenderWindow *janela);
 };

@@ -1,5 +1,5 @@
 <h1 align="center">
-	HOLY AVENGER
+	(RPG SEM NOME)
 </h1>
 <p>
 	Projeto de jogo rpg para o projeto final da disciplina INF 112 2022/2 da Universidade Federal de Viçosa.

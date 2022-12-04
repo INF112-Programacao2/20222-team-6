@@ -18,56 +18,73 @@ void Personagens::movement() {
         contador += 1.f;
         if (contador > 20) contador = 0;
             if (contador >= 0 && contador < 5 && teclas[0] > teclas[2]) {
-                personagemT.loadFromFile("human/human-back.png");
+                personagemT.loadFromFile("sprites/anao/dwarf-back.png");
                 personagemS.setTexture(personagemT);
             }
             if (contador >= 0 && contador < 5 && teclas[0] < teclas[2]) {
-                personagemT.loadFromFile("human/human-front.png");
+                personagemT.loadFromFile("sprites/anao/dwarf-front.png");
                 personagemS.setTexture(personagemT);
             }
             if (contador > 5 && contador < 10 && teclas[0] > teclas[2]) {
-                personagemT.loadFromFile("human/human-back-walking-1.png");
+                personagemT.loadFromFile("sprites/anao/dwarf-back1.png");
                 personagemS.setTexture(personagemT);
             }
             if (contador > 10 && contador < 15 && teclas[0] > teclas[2]) {
-                personagemT.loadFromFile("human/human-back.png");
+                personagemT.loadFromFile("sprites/anao/dwarf-back.png");
                 personagemS.setTexture(personagemT);
             }
             if (contador > 15 && contador < 20 && teclas[0] > teclas[2]) {
-                personagemT.loadFromFile("human/human-back-walking-2.png");
+                personagemT.loadFromFile("sprites/anao/dwarf-back2.png");
                 personagemS.setTexture(personagemT);
             }
             if (contador > 5 && contador < 10 && teclas[0] < teclas[2]) {
-                personagemT.loadFromFile("human/human-front-walking-1.png");
+                personagemT.loadFromFile("sprites/anao/dwarf-front1.png");
                 personagemS.setTexture(personagemT);
             }
             if (contador > 10 && contador < 15 && teclas[0] < teclas[2]) {
-                personagemT.loadFromFile("human/human-front.png");
+                personagemT.loadFromFile("sprites/anao/dwarf-front.png");
                 personagemS.setTexture(personagemT);
             }
             if (contador > 15 && contador < 20 && teclas[0] < teclas[2]) {
-                personagemT.loadFromFile("human/human-front-walking-2.png");
+                personagemT.loadFromFile("sprites/anao/dwarf-front2.png");
+                personagemS.setTexture(personagemT);
+            }
+        }
+    if (teclas[1] == 1 || teclas[3] == 1) {      /* Movimento do W e do S */
+        personagemS.move(( teclas[3] - teclas[1]) * 2,0);
+        contador += 1.f;
+        if (contador > 20) contador = 0;
+            if (contador >= 0 && contador < 5 && teclas[1] > teclas[3]) {
+                personagemT.loadFromFile("sprites/anao/dwarf-side-left.png");
+                personagemS.setTexture(personagemT);
+            }
+            if (contador >= 0 && contador < 5 && teclas[1] < teclas[3]) {
+                personagemT.loadFromFile("sprites/anao/dwarf-side-right.png");
+                personagemS.setTexture(personagemT);
+            }
+            if (contador > 5 && contador < 10 && teclas[1] > teclas[3]) {
+                personagemT.loadFromFile("sprites/anao/dwarf-side-left1.png");
+                personagemS.setTexture(personagemT);
+            }
+            if (contador > 10 && contador < 15 && teclas[1] > teclas[3]) {
+                personagemT.loadFromFile("sprites/anao/dwarf-side-left.png");
+                personagemS.setTexture(personagemT);
+            }
+            if (contador > 15 && contador < 20 && teclas[1] > teclas[3]) {
+                personagemT.loadFromFile("sprites/anao/dwarf-side-left2.png");
+                personagemS.setTexture(personagemT);
+            }
+            if (contador > 5 && contador < 10 && teclas[1] < teclas[3]) {
+                personagemT.loadFromFile("sprites/anao/dwarf-side-right1.png");
+                personagemS.setTexture(personagemT);
+            }
+            if (contador > 10 && contador < 15 && teclas[1] < teclas[3]) {
+                personagemT.loadFromFile("sprites/anao/dwarf-side-right.png");
+                personagemS.setTexture(personagemT);
+            }
+            if (contador > 15 && contador < 20 && teclas[1] < teclas[3]) {
+                personagemT.loadFromFile("sprites/anao/dwarf-side-right2.png");
                 personagemS.setTexture(personagemT);
             }
         }
 }
-
-/*     else if (teclas[1] == 1 || teclas[3] == 1){
-        personagemS.move(teclas[1] - teclas[3], 0);
-        if(_type == HUMANO){
-            timer+= 1.f;
-            if (checkTimer(timer) == 1 && teclas[1] < teclas[3]){
-                personagemT.loadFromFile("human/human-left-walking-1.png");
-            }
-            if (checkTimer(timer) == 2 && teclas[1] < teclas[3]){
-                personagemT.loadFromFile("human/human-left-walking-2.png");
-            }
-            if (checkTimer(timer) == 1 && teclas[1] > teclas[3]){
-                personagemT.loadFromFile("human/human-right-walking-1.png");
-            }
-            if (checkTimer(timer) == 2 && teclas[1] > teclas[3]){
-                personagemT.loadFromFile("human/human-right-walking-1.png");
-            }
-        }
-    }
-} */

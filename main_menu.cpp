@@ -1,5 +1,6 @@
 #include "main_menu.h"
 #include "Game.h"
+#include "LeitorDeDados.h"
 
 
 MainMenu::MainMenu()
@@ -19,9 +20,9 @@ MainMenu::~MainMenu()
 
 void MainMenu::init_variables()
 {
-    _opcoes = {"Play", "Credits"};
-    _coordenadas = {{275, 505}, {825, 515}};
-    _sizes = {80, 68};
+    _opcoes = {"Play", "Exit"};
+    _coordenadas = {{275, 505}, {855, 510}};
+    _sizes = {80, 80};
     _texts.resize(2);
 
     for (std::size_t i{}; i < _texts.size(); i++)
@@ -39,43 +40,13 @@ void MainMenu::init_variables()
     font->loadFromFile("./alagard.ttf");
 }
 
-void MainMenu::init_second_variables()
-{
-    _opcoes = {"Elf", "Dwarf", "Human"};
-    _coordenadas = {{225, 575}, {535, 575}, {890, 575}};
-    _sizes = {100, 90, 90};
-    _texts.resize(3);
-    
-
-    for (std::size_t i{}; i < _texts.size(); i++)
-    {
-        _texts[i].setFont(*font);
-        _texts[i].setString(_opcoes[i]);
-        _texts[i].setCharacterSize(_sizes[i]);
-        _texts[i].setOutlineColor(sf::Color::Black);
-        _texts[i].setFillColor(sf::Color::White);
-        _texts[i].setPosition(_coordenadas[i]);
-    }
-
-    imageT->loadFromFile("./race-selection.png");
-    imgS->setTexture(*imageT);
-}
 void MainMenu::menu_update(sf::RenderWindow *janela, bool &running)
 {
     sf::Event e;
     
-    if(event == false)
-    {
     _texts[_pos].setOutlineThickness(4);
     _texts[_pos].setOutlineColor(sf::Color::Cyan);
-    }
-
-    if(event == true)
-    {
-    _texts[_pos].setOutlineThickness(8);
-    _texts[_pos].setOutlineColor(sf::Color::Black);
-    }
-
+    
     while(janela->pollEvent(e))
     {
         if(e.type == sf::Event::Closed)
@@ -83,8 +54,8 @@ void MainMenu::menu_update(sf::RenderWindow *janela, bool &running)
             janela->close();
         }
 
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && !_select && event == false){
-            if(_pos < cont)
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && !_select){
+            if(_pos < 1)
             {
                 _pos++;
                 _select = true;
@@ -96,7 +67,7 @@ void MainMenu::menu_update(sf::RenderWindow *janela, bool &running)
             }
         }
 
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && !_select && event == false)
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && !_select)
         {
             if( _pos > 0){
                 _pos--;
@@ -109,46 +80,16 @@ void MainMenu::menu_update(sf::RenderWindow *janela, bool &running)
             }
         }
 
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && _pos == 0 && !_click_enter && event == false)
-        {
-            _click_enter = true;
-            cont++;
-            event = true;
-            init_second_variables();
-            _click_enter = false;
-        }
-
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && !_select && event == true)
-        {
-            if( _pos < cont)
-            {
-                _pos++;
-                _select = true;
-                _texts[_pos].setOutlineThickness(8);
-                _texts[_pos].setOutlineColor(sf::Color::Black);
-                _texts[_pos - 1].setOutlineThickness(0);
-                _select = false;
-                _click_enter = false;
-            }
-        }
-
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && !_select && event == true){
-            if( _pos > 0)
-            {
-                _pos--;
-                _select = true;
-                _texts[_pos].setOutlineThickness(8);
-                _texts[_pos].setOutlineColor(sf::Color::Black);
-                _texts[_pos + 1].setOutlineThickness(0);
-                _select = false;
-                _click_enter = false;
-            }
-        }
-
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && _pos == 0 && !_click_enter && event == true)
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && _pos == 0 && !_click_enter)
         {
             _click_enter = true;
             running = false;
+        }
+
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && _pos == 1 && !_click_enter)
+        {
+            _click_enter = true;
+            janela->close();
         }
     }
 }

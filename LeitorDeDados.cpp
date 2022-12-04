@@ -21,7 +21,7 @@ vector<pair<string,vector<int>>> sendStatus()
     int defI;
     int lifI;
     pair<string, vector<int>> auxPair;
-
+    
     fstream arquivo;
     arquivo.open("personagensInfo.txt", ios::in);
     if(arquivo.is_open()){
@@ -37,7 +37,7 @@ vector<pair<string,vector<int>>> sendStatus()
             variaveisInteiras.push_back(atkI);
             variaveisInteiras.push_back(defI);
             variaveisInteiras.push_back(lifI);
-            auxPair = make_pair(name,variaveisInteiras);
+            auxPair = make_pair(name, variaveisInteiras);
             allStatus.push_back(auxPair);
         }
         arquivo.close();
