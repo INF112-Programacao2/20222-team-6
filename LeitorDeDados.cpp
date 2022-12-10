@@ -1,29 +1,40 @@
 //
 // Created by pedro on 15/11/22.
 //
+
+//Edited by Juan Freire on 10/12/2022
+//
 #include <iostream>
 #include <fstream>
 #include <vector>
 #include <string>
 
+#include "Herois.h"
+#include "LeitorDeDados.h"
 using namespace std;
 
-vector<pair<string,vector<int>>> sendStatus()
+vector<pair<string,vector<int>>> sendStatus(string entity)
 {
     vector<int>variaveisInteiras;
     vector<pair<string,vector<int>>> allStatus;
+    
     string race;
     string name;
     string atk;
     string def;
     string lif;
+    
     int atkI;
     int defI;
     int lifI;
     pair<string, vector<int>> auxPair;
     
     fstream arquivo;
-    arquivo.open("personagensInfo.txt", ios::in);
+
+    if(entity == "Dwarf"){arquivo.open("Dwarf.txt", ios::in);}
+    else if(entity == "Inimigo"){arquivo.open("Inimigo.txt", ios::in);}
+    else if(entity == "Boss"){arquivo.open("Boss.txt", ios::in);}
+
     if(arquivo.is_open()){
         while(arquivo.good()){
             getline(arquivo,race);

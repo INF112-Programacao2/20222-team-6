@@ -22,18 +22,19 @@ class Personagens
 
     public:
         Personagens();
-        Personagens(vector<pair<string,vector<int>>> allStatus);
+        //Personagens(/*vector<pair<string,vector<int>>> allStatus*/);
         ~Personagens();
         sf::Texture personagemT;
         sf::Sprite personagemS;
 
         // Funcoes
-        void duelo();
-        void golpes();
+
         void movement();
+        
         void update();
         void render();
         void initPersonagens();
+        
 };
 
 #endif

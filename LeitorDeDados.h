@@ -10,8 +10,11 @@
 #include <vector>
 #include <string>
 
+
 using namespace std;
 
-vector<pair<string,vector<int>>> sendStatus();
+
+vector<pair<string,vector<int>>> sendStatus(string entity);
+
 
 #endif //RPG_GAME_LEITORDEDADOS_H

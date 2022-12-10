@@ -3,20 +3,13 @@
 
 class Acao
 {
-
-
-    public:
+public:
     Acao();
     ~Acao();
     void defineAtack(/*Herois* heroi, Herois* inimigo*/);
     void defineDefense(/*Herois* heroi*/);
     void defineHeal(/*Herois* heroi*/);
     
-
-
-
-
-
 };
 
 #endif 

@@ -3,11 +3,13 @@
 
 float contador;
 
-Personagens::Personagens(std::vector<std::pair<std::string,std::vector<int>>>allStatus){
+Personagens::Personagens(/*std::vector<std::pair<std::string,std::vector<int>>>allStatus*/){
+    /*
     this->nome = allStatus[0].first;
     this->vida = allStatus[0].second[2];
     this->ataque = allStatus[0].second[0];
     this->defesa = allStatus[0].second[1];
+    */
 }
 
 

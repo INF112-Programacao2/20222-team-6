@@ -12,9 +12,6 @@ void Acao::defineAtack(/*Herois* heroi, Herois* inimigo*/){
     actualHP = inimigo->getHP() - heroi->getAtack();
     inimigo->setHP(actualHP);
     
-    
-    
-    
     */
 }
 
@@ -24,12 +21,7 @@ void Acao::defineDefense(/*Herois* heroi*/){
     damageResistence += heroi->getDefense();
     heroi->setDefense(damageResistence);
 
-    
-    
-    
     */
-
-
 }
 
 void Acao::defineHeal(/*Herois* heroi*/){
@@ -37,11 +29,6 @@ void Acao::defineHeal(/*Herois* heroi*/){
     int Heal = 20;
     Heal += heroi->getHP();
     heroi->setHP(Heal);
-    
-    
+       
     */
-
-
-
-
 }

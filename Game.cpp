@@ -1,13 +1,14 @@
 #include "Game.h"
 #include "Personagens.h"
 #include "main_menu.h"
+#include "PersonagemPrincipal.h"
 
-// Funcoes privadas
 void Game::initVariaveis()
 {
     this-> window = nullptr;
-    heroi = new Personagens(sendStatus());
-    teste = new MainMenu();
+    heroi = new PersonagemPrincipal(sendStatus("Dwarf"));
+    movement = new Personagens();
+    menu = new MainMenu();
     running = true;
 }
 
@@ -80,13 +81,13 @@ void Game::update()
         
         while(running)
         {
-            teste->menu_update(this->window, running);
-            teste->menu_draw(this->window);
+            menu->menu_update(this->window, running);
+            menu->menu_draw(this->window);
         }
         this->checkIfPressed();
-        heroi->movement();
+        movement->movement();
         this->window->clear();
-        this->window->draw(heroi->personagemS);
+        this->window->draw(movement->personagemS);
         this->window->display();
     }
 }

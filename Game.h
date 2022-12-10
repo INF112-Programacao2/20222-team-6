@@ -7,6 +7,7 @@
 #include <SFML/Audio.hpp>
 #include <SFML/Network.hpp>
 #include "Personagens.h"
+#include "PersonagemPrincipal.h"
 #include "globalParameters.h"
 #include "Menu.h"
 #include "main_menu.h"
@@ -20,8 +21,9 @@ class Personagens;
 class Game : public Menu
 {
     private:
-        // Variaveis
-        Personagens* heroi;
+        // Variaveis de classes de personagens
+        PersonagemPrincipal *heroi;
+        Personagens *movement;
         float timer;
         bool running;
         //Window
@@ -32,7 +34,7 @@ class Game : public Menu
         sf::Event e;
         
         // Objetos do jogo
-        MainMenu *teste;
+        MainMenu *menu;
         
         // Funcoes privadas
         void initVariaveis();
