@@ -26,6 +26,8 @@ class Game : public Menu
         Personagens *movement;
         float timer;
         bool running;
+        bool lutando = false;
+        int i = 0;
         //Window
         sf::VideoMode videoMode;
         sf::RenderWindow* window;
@@ -41,6 +43,7 @@ class Game : public Menu
         void initInimigos();
         void spriteMovement();
         void isMoving();
+        void checkPosition();
 
     protected:
 
@@ -51,9 +54,11 @@ class Game : public Menu
 
         // Funcoes
         void run();
+        std::string nomeArquivo;
         void update();
         void checkIfPressed();
         void render();
+        void checkWalk();
         sf::Event getEvent();
 };
 

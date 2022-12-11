@@ -9,7 +9,6 @@ int main()
     Game jogo;
 
     // Loop do jogo
-
     jogo.run();
 
     return 0;
