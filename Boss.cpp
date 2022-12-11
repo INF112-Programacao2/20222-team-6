@@ -14,10 +14,27 @@ Boss::Boss(std::vector<std::pair<std::string,std::vector<int>>>allStatus)
 Boss::~Boss(){}
 
 
-void Boss::getLife(){}
+int Boss::getLife()
+{
+    return this->life;
+}
 
-void Boss::getDefense(){}
+int Boss::getDefense()
+{
+    return this->defense;
+}
 
-void Boss::setLife(int &newLife){}
+int Boss::getAtack()
+{
+    return this->atack;
+}
 
-void Boss::setDefense(int &newDefense){}
+void Boss::setLife(int &newLife)
+{
+    this->life = newLife;
+}
+
+int Boss::setDefense(int &newDefense)
+{
+    return newDefense;
+}

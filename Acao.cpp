@@ -6,29 +6,39 @@ Acao::Acao(){}
 
 Acao::~Acao(){}
 
-void Acao::defineAtack(/*Herois* heroi, Herois* inimigo*/){
-    /*
-    int actualHP;
-    actualHP = inimigo->getHP() - heroi->getAtack();
-    inimigo->setHP(actualHP);
+bool Acao::defineAtack(Herois* heroi, Herois* inimigo){
     
-    */
+    int actualHP;
+    if(inimigo->uso == 0){
+    actualHP = inimigo->getLife() - (heroi->getAtack() - inimigo->getDefense());
+    }
+
+    if(inimigo->uso >= 1)
+    {
+        int defense = 30;
+        inimigo->uso = 0;
+        actualHP = inimigo->getLife() - (heroi->getAtack() - inimigo->setDefense(defense) - inimigo->getDefense());
+    }
+    
+    if(actualHP <= 0)
+    {
+        return false;
+    }
+    else
+    {
+        inimigo->setLife(actualHP);
+        return true;
+    } 
 }
 
-void Acao::defineDefense(/*Herois* heroi*/){
-    /*
-    int damageResistence = 30;
-    damageResistence += heroi->getDefense();
-    heroi->setDefense(damageResistence);
-
-    */
+void Acao::defineDefense(Herois* heroi){
+    
+    heroi->uso++;
 }
 
-void Acao::defineHeal(/*Herois* heroi*/){
-    /*
+void Acao::defineHeal(Herois* heroi){
+
     int Heal = 20;
-    Heal += heroi->getHP();
-    heroi->setHP(Heal);
-       
-    */
+    Heal += heroi->getLife();
+    heroi->setLife(Heal);   
 }

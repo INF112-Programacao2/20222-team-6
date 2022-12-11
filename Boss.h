@@ -14,10 +14,11 @@ class Boss : public Herois
     Boss();
     Boss(std::vector<std::pair<std::string,std::vector<int>>>allStatus);
     ~Boss();
-    virtual void getLife();
-    virtual void getDefense();
+    virtual int getLife();
+    virtual int getDefense();
+    virtual int getAtack();
     virtual void setLife(int &newLife);
-    virtual void setDefense(int &newDefense);
+    virtual int setDefense(int &newDefense);
 };
 
 #endif

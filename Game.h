@@ -11,6 +11,7 @@
 #include "globalParameters.h"
 #include "Menu.h"
 #include "main_menu.h"
+#include "primeira_luta.h"
 
 /*
     Essa classe representa a game engine.
@@ -22,8 +23,6 @@ class Game : public Menu
 {
     private:
         // Variaveis de classes de personagens
-        PersonagemPrincipal *heroi;
-        Personagens *movement;
         float timer;
         bool running;
         bool lutando = false;
@@ -37,7 +36,9 @@ class Game : public Menu
         
         // Objetos do jogo
         MainMenu *menu;
-        
+        PersonagemPrincipal *heroi;
+        Personagens *movement;
+        PrimeiraLuta *luta1;
         // Funcoes privadas
         void initVariaveis();
         void initInimigos();

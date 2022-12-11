@@ -1,6 +1,8 @@
 #include "PersonagemPrincipal.h"
 #include "LeitorDeDados.h"
 
+PersonagemPrincipal::PersonagemPrincipal(){}
+
 PersonagemPrincipal::PersonagemPrincipal(std::vector<std::pair<std::string,std::vector<int>>>allStatus)
 {
     this->name = allStatus[0].first;
@@ -12,12 +14,28 @@ PersonagemPrincipal::PersonagemPrincipal(std::vector<std::pair<std::string,std::
 PersonagemPrincipal::~PersonagemPrincipal(){}
 
 
-void PersonagemPrincipal::getLife(){}
+int PersonagemPrincipal::getLife()
+{
+    return this->life;
+}
 
-void PersonagemPrincipal::getDefense(){}
+int PersonagemPrincipal::getDefense()
+{
+    return this->defense;
+}
 
-void PersonagemPrincipal::setLife(int &newLife){}
+int PersonagemPrincipal::getAtack()
+{
+    return this->atack;
+}
 
-void PersonagemPrincipal::setDefense(int &newDefense){}
+void PersonagemPrincipal::setLife(int &newLife)
+{
+    this->life = newLife;
+}
 
+int PersonagemPrincipal::setDefense(int &newDefense)
+{
+    return newDefense;
+}
 

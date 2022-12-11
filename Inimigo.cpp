@@ -3,6 +3,8 @@
 
 #include <vector>
 
+Inimigo::Inimigo(){}
+
 Inimigo::Inimigo(std::vector<std::pair<std::string,std::vector<int>>>allStatus)
 {
     this->name = allStatus[0].first;
@@ -14,10 +16,27 @@ Inimigo::Inimigo(std::vector<std::pair<std::string,std::vector<int>>>allStatus)
 Inimigo::~Inimigo(){}
 
 
-void Inimigo::getLife(){}
+int Inimigo::getLife()
+{
+    return this->life;
+}
 
-void Inimigo::getDefense(){}
+int Inimigo::getDefense()
+{
+    return this->defense;
+}
 
-void Inimigo::setLife(int &newLife){}
+int Inimigo::getAtack()
+{
+    return this->atack;
+}
 
-void Inimigo::setDefense(int &newDefense){}
+void Inimigo::setLife(int &newLife)
+{
+    this->life = newLife;
+}
+
+int Inimigo::setDefense(int &newDefense)
+{
+    return newDefense;
+}
