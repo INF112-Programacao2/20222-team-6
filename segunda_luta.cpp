@@ -1,4 +1,4 @@
-#include "primeira_luta.h"
+#include "segunda_luta.h"
 #include "Acao.h"
 #include "PersonagemPrincipal.h"
 #include "Inimigo.h"
@@ -11,47 +11,48 @@
 #include <time.h>
 #include <string>
 
-PrimeiraLuta::PrimeiraLuta()
+SegundaLuta::SegundaLuta()
 {
     imageT = new sf::Texture();
     imageS = new sf::Sprite();
     font = new sf::Font();
 
     heroi = new PersonagemPrincipal(sendStatus("Dwarf"));
-    inimigo = new Inimigo(sendStatus("Inimigo"));
+    boss = new Boss(sendStatus("Boss"));
     acao = new Acao();
 
     _select = false;
     _click_enter = false;
+    gameover = false;
     _posicao = 0;
     moviment = false;
-    gameover = false;
     vidaHeroi = "";
-    vidaInimigo = "";
+    vidaBoss = "";
 
     initialize();
 }
 
-PrimeiraLuta::~PrimeiraLuta()
+SegundaLuta::~SegundaLuta()
 {
     delete imageT;
     delete imageS;
     delete font;
+
     delete heroi;
-    delete inimigo;
+    delete boss;
     delete acao;
 }
 
-void PrimeiraLuta::initialize()
-{
+void SegundaLuta::initialize()
+{   
     vidaHeroi = to_string(heroi->getLife());
-    vidaInimigo = to_string(inimigo->getLife());
-    _opcoes = {"Ataque", "Defesa", "Curar", "HP: " + vidaHeroi, "HP: " + vidaInimigo};
-    _coordenadas = {{570,70}, {800,70}, {1040,70}, {300, 70}, {550, 600}};
+    vidaBoss = to_string(boss->getLife());
+    _opcoes = {"Ataque", "Defesa", "Curar", "HP: " + vidaHeroi, "HP: " + vidaBoss};
+    _coordenadas = {{570,70}, {800,70}, {1040,70}, {300, 70}, {850, 600}};
     _sizes = {50, 50, 50, 50, 60};
     _texts.resize(5);
 
-    imageT->loadFromFile("./primeira-luta.png");
+    imageT->loadFromFile("./segunda-luta.png");
     imageS->setTexture(*imageT);
     font->loadFromFile("./alagard.ttf");
 
@@ -64,7 +65,8 @@ void PrimeiraLuta::initialize()
         _texts[i].setFillColor(sf::Color::Blue);
         _texts[i].setPosition(_coordenadas[i]);
     }
-    //inicia as cores da vida do Inimigo e do Heroi.
+
+    //inicia as cores da vida do Boss e do Heroi;
     for(int i = 3; i< 5; i++)
     {
         _texts[i].setFont(*font);
@@ -74,16 +76,16 @@ void PrimeiraLuta::initialize()
         _texts[i].setFillColor(sf::Color::Black);
         _texts[i].setPosition(_coordenadas[i]);      
     }
-
 }
 
-void PrimeiraLuta::initializeVidas()
+//funcao usada apenas para atualizar a vida do Heroi e do Boss durante a luta.
+void SegundaLuta::initializeVidas()
 {
     vidaHeroi = to_string(heroi->getLife());
-    vidaInimigo = to_string(inimigo->getLife());
-    _opcoes = {"Ataque", "Defesa", "Curar", "HP: " + vidaHeroi, "HP: " + vidaInimigo};
+    vidaBoss = to_string(boss->getLife());
+    _opcoes = {"Ataque", "Defesa", "Curar", "HP: " + vidaHeroi, "HP: " + vidaBoss};
 
-    //atualiza as cores da vida do Inimigo e do Heroi.
+    //atualiza as cores da vida do Boss e do Heroi;
     for(int i = 3; i< 5; i++)
     {
         _texts[i].setFont(*font);
@@ -95,14 +97,17 @@ void PrimeiraLuta::initializeVidas()
     }
 }
 
-void PrimeiraLuta::lutaUpdate(sf::RenderWindow *janela, bool &running, bool &fim)
+void SegundaLuta::lutaUpdate(sf::RenderWindow *janela, bool &running, bool &fim)
 {
 sf::Event evento;
 
 while(janela->pollEvent(evento))
 {
-    if(evento.Event::KeyPressed && evento.Event::key.code == sf::Keyboard::Escape)
-            janela->close();
+    if(evento.type == sf::Event::Closed)
+    {
+        running = false;
+        janela->close();
+    }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && !_select)
     {
         if(_posicao < 2)
@@ -137,7 +142,7 @@ while(janela->pollEvent(evento))
             _texts[_posicao].setOutlineThickness(0);
             _select = true;
             _click_enter = true;
-            if(!acao->defineAtack(heroi, inimigo))
+            if(!acao->defineAtack(heroi, boss))
             {
                 running = false;
                 std::cout << "Morri" << std::endl;
@@ -171,7 +176,8 @@ while(janela->pollEvent(evento))
 }
 }
 
-void PrimeiraLuta::lutaDraw(sf::RenderWindow *janela)
+
+void SegundaLuta::lutaDraw(sf::RenderWindow *janela)
 {
     janela->clear();
     janela->draw(*imageS);
@@ -184,7 +190,7 @@ void PrimeiraLuta::lutaDraw(sf::RenderWindow *janela)
     janela->display();
 }
 
-void PrimeiraLuta::movimentEnemie(bool &moviment, bool &gameover)
+void SegundaLuta::movimentEnemie(bool &moviment, bool &gameover)
 {
     srand(time(NULL));
     int movimento = rand()%3;
@@ -195,7 +201,7 @@ void PrimeiraLuta::movimentEnemie(bool &moviment, bool &gameover)
 
     if(movimento == 0)
     {
-        if(!acao->defineAtack(inimigo, heroi) && contador == 0)
+        if(!acao->defineAtack(boss, heroi) && contador == 0)
         {
         gameover = true;
         moviment = false;
@@ -208,9 +214,10 @@ void PrimeiraLuta::movimentEnemie(bool &moviment, bool &gameover)
         moviment = false;
         }
     }
-    if(movimento == 1){acao->defineDefense(inimigo); moviment = false;}
+    if(movimento == 1){acao->defineDefense(boss); moviment = false;}
 
-    if(movimento == 2){acao->defineHeal(inimigo); initializeVidas(); moviment = false;}
+    if(movimento == 2){acao->defineHeal(boss); initializeVidas(); moviment = false;}
 
     _select = false;
 }
+

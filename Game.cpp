@@ -3,12 +3,14 @@
 #include "main_menu.h"
 #include "PersonagemPrincipal.h"
 #include "primeira_luta.h"
+#include "segunda_luta.h"
 
 void Game::initVariaveis()
 {
     this-> window = nullptr;
     heroi = new PersonagemPrincipal(sendStatus("Dwarf"));
     luta1 = new PrimeiraLuta();
+    luta2 = new SegundaLuta();
     movement = new Personagens();
     menu = new MainMenu();
     running = true;
@@ -38,6 +40,8 @@ Game::Game()
 Game::~Game()
 {
     delete this-> window;
+    delete heroi;
+    delete movement;
 }
 // Funcoes
 sf::Event Game::getEvent()
@@ -87,8 +91,7 @@ void Game::checkWalk()
             }
             if (movement->personagemS.getPosition().y <= 120 && e.Event::KeyPressed &&
                 e.Event::key.code == sf::Keyboard::Enter) {
-                nomeArquivo = "path2.png";
-                lutando = true;
+                lutando1 = true;
             }
         }
     }
@@ -131,11 +134,34 @@ void Game::checkWalk()
         if(movement->personagemS.getPosition().y <= 438) {
             movement->personagemS.setPosition(movement->personagemS.getPosition().x,438);
         }
-        if (movement->personagemS.getPosition().y == 120 && e.Event::KeyPressed &&
+        if (movement->personagemS.getPosition().y == 438 && e.Event::KeyPressed &&
             e.Event::key.code == sf::Keyboard::Enter) {
-            lutando = true;
-            nomeArquivo = "segunda-luta.png";
+            lutando2 = true;
         }
+    }
+
+    if(nomeArquivo == "game-over.png")
+    {
+    if (e.Event::KeyPressed && e.Event::key.code == sf::Keyboard::Escape)
+            this-> window->close();
+    }
+
+    if(nomeArquivo == "end-game1.png")
+    {
+    if (e.Event::KeyPressed && e.Event::key.code == sf::Keyboard::Right) //aperte a setinha da direita para mudar a pagina
+    {
+        nomeArquivo = "end-game2.png";
+        movement->backGroundT.loadFromFile(nomeArquivo);
+        movement->backGroundS.setTexture(movement->backGroundT);
+    }
+    }
+
+    if(nomeArquivo == "end-game2.png")
+    {
+    if (e.Event::KeyPressed && e.Event::key.code == sf::Keyboard::Escape) //aperte Esc para fechar a ultima pagina.
+    {
+        this->window->close();
+    }
     }
 }
 
@@ -154,6 +180,7 @@ void Game::update()
 
         if (e.Event::type == sf::Event::Closed)
             this-> window->close();
+
         if (e.Event::KeyPressed && e.Event::key.code == sf::Keyboard::Escape)
             this-> window->close();
         
@@ -161,25 +188,59 @@ void Game::update()
         {
             menu->menu_update(this->window, running);
             menu->menu_draw(this->window);
+
+            if(!running) delete menu;
         }
-        while(lutando)
+        while(lutando1)
         {
-            luta1->lutaUpdate(this->window, lutando);
+            luta1->lutaUpdate(this->window, lutando1, fim);
             luta1->lutaDraw(this->window);
-            if(!lutando)    //atualiza a sprite contendo o segundo cenario
+            if(!lutando1 && !fim)    //atualiza a sprite contendo o segundo cenario
             {
             nomeArquivo = "path2.png";
             movement->backGroundT.loadFromFile(nomeArquivo);
             movement->backGroundS.setTexture(movement->backGroundT);
             movement->personagemS.setPosition(700, 720); //define a nova posicao do personagem no novo cenario.
             }
+            if(!lutando1 && fim == true)
+            {
+                nomeArquivo = "game-over.png";
+                movement->backGroundT.loadFromFile(nomeArquivo);
+                movement->backGroundS.setTexture(movement->backGroundT);
+            }
         }
+
+        while(lutando2)
+        {
+            luta2->lutaUpdate(this->window, lutando2, fim);
+            luta2->lutaDraw(this->window);
+            if(!lutando2 && !fim)
+            {
+                nomeArquivo = "end-game1.png";
+                movement->backGroundT.loadFromFile(nomeArquivo);
+                movement->backGroundS.setTexture(movement->backGroundT);
+            }
+            if(!lutando2 && fim == true)
+            {
+                nomeArquivo = "game-over.png";
+                movement->backGroundT.loadFromFile(nomeArquivo);
+                movement->backGroundS.setTexture(movement->backGroundT);
+            }      
+        }
+        if((nomeArquivo != "game-over.png") && (nomeArquivo != "end-game1.png") && (nomeArquivo != "end-game2.png"))
+        {
         this->checkIfPressed();
         movement->movement();
+        }
+
         this-> checkWalk();
         this->window->clear();
         this->window->draw(movement->backGroundS);
-        this->window->draw(movement->personagemS);
+
+        if((nomeArquivo != "game-over.png") && (nomeArquivo != "end-game1.png") && (nomeArquivo != "end-game2.png"))
+        {
+                    this->window->draw(movement->personagemS);
+        }
         this->window->display();
     }
 }

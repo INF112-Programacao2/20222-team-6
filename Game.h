@@ -12,7 +12,7 @@
 #include "Menu.h"
 #include "main_menu.h"
 #include "primeira_luta.h"
-
+#include "segunda_luta.h"
 /*
     Essa classe representa a game engine.
 */
@@ -25,7 +25,9 @@ class Game : public Menu
         // Variaveis de classes de personagens
         float timer;
         bool running;
-        bool lutando = false;
+        bool fim = false;
+        bool lutando1 = false;
+        bool lutando2 = false;
         int i = 0;
         //Window
         sf::VideoMode videoMode;
@@ -39,6 +41,7 @@ class Game : public Menu
         PersonagemPrincipal *heroi;
         Personagens *movement;
         PrimeiraLuta *luta1;
+        SegundaLuta *luta2;
         // Funcoes privadas
         void initVariaveis();
         void initInimigos();

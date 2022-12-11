@@ -1,31 +1,30 @@
-#ifndef PRIMEIRA_LUTA_H
-#define PRIMEIRA_LUTA_H
+#ifndef SEGUNDA_LUTA_H
+#define SEGUNDA_LUTA_H
 
 #include "Luta.h"
 #include "PersonagemPrincipal.h"
 #include "Inimigo.h"
 #include "Acao.h"
+#include "Boss.h"
 
-class PrimeiraLuta : public Luta
+class SegundaLuta : public Luta
 {
-private:
     PersonagemPrincipal *heroi;
-    Inimigo *inimigo;
+    Boss *boss;
     Acao *acao;
     std::string vidaHeroi;
-    std::string vidaInimigo;
+    std::string vidaBoss;
 
     bool moviment, gameover;
 
 public:
-    PrimeiraLuta();
-    ~PrimeiraLuta();
+    SegundaLuta();
+    ~SegundaLuta();
     void movimentEnemie(bool &moviment, bool &gameover);
     void initialize();
     void initializeVidas();
     void lutaUpdate(sf::RenderWindow *janela, bool &running, bool &fim);
     void lutaDraw(sf::RenderWindow *janela);
-    
 };
 
 #endif

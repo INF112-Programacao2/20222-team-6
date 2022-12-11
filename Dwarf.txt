@@ -1,6 +1,6 @@
 Dwarf
 Igran Brasbornes
-1000
+100
 50
 450
 
