@@ -44,10 +44,6 @@ class Game : public Menu
         SegundaLuta *luta2;
         // Funcoes privadas
         void initVariaveis();
-        void initInimigos();
-        void spriteMovement();
-        void isMoving();
-        void checkPosition();
 
     protected:
 
@@ -61,9 +57,7 @@ class Game : public Menu
         std::string nomeArquivo;
         void update();
         void checkIfPressed();
-        void render();
         void checkWalk();
-        sf::Event getEvent();
 };
 
 #endif 

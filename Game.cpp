@@ -44,11 +44,6 @@ Game::~Game()
     delete movement;
 }
 // Funcoes
-sf::Event Game::getEvent()
-{
-    return e;
-}
-
 void Game::checkIfPressed()
 {
     

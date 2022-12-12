@@ -3,7 +3,7 @@
 
 float contador;
 
-Personagens::Personagens(/*std::vector<std::pair<std::string,std::vector<int>>>allStatus*/){
+Personagens::Personagens(){
 
 }
 
@@ -115,7 +115,6 @@ void Personagens::movement() {
         }
 
     if (teclas[1] == 1 || teclas[3] == 1) {      /* Movimento do A e do D */
-        std::cout << personagemS.getPosition().x << " " << personagemS.getPosition().y << std::endl;
             personagemS.move(( teclas[3] - teclas[1]) * 6,0);
             contador += 1.f;
             if (contador > 20) contador = 0;

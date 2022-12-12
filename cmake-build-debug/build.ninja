@@ -55,18 +55,6 @@ build CMakeFiles/rpg_game.dir/main.cpp.o: CXX_COMPILER__rpg_game_Debug /home/ped
   OBJECT_DIR = CMakeFiles/rpg_game.dir
   OBJECT_FILE_DIR = CMakeFiles/rpg_game.dir
 
-build CMakeFiles/rpg_game.dir/Animation.cpp.o: CXX_COMPILER__rpg_game_Debug /home/pedro/20222-team-6/Animation.cpp || cmake_object_order_depends_target_rpg_game
-  DEP_FILE = CMakeFiles/rpg_game.dir/Animation.cpp.o.d
-  FLAGS = -g -fdiagnostics-color=always -std=gnu++14
-  OBJECT_DIR = CMakeFiles/rpg_game.dir
-  OBJECT_FILE_DIR = CMakeFiles/rpg_game.dir
-
-build CMakeFiles/rpg_game.dir/Texture.cpp.o: CXX_COMPILER__rpg_game_Debug /home/pedro/20222-team-6/Texture.cpp || cmake_object_order_depends_target_rpg_game
-  DEP_FILE = CMakeFiles/rpg_game.dir/Texture.cpp.o.d
-  FLAGS = -g -fdiagnostics-color=always -std=gnu++14
-  OBJECT_DIR = CMakeFiles/rpg_game.dir
-  OBJECT_FILE_DIR = CMakeFiles/rpg_game.dir
-
 build CMakeFiles/rpg_game.dir/LeitorDeDados.cpp.o: CXX_COMPILER__rpg_game_Debug /home/pedro/20222-team-6/LeitorDeDados.cpp || cmake_object_order_depends_target_rpg_game
   DEP_FILE = CMakeFiles/rpg_game.dir/LeitorDeDados.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu++14
@@ -91,6 +79,12 @@ build CMakeFiles/rpg_game.dir/Personagens.cpp.o: CXX_COMPILER__rpg_game_Debug /h
   OBJECT_DIR = CMakeFiles/rpg_game.dir
   OBJECT_FILE_DIR = CMakeFiles/rpg_game.dir
 
+build CMakeFiles/rpg_game.dir/Luta.cpp.o: CXX_COMPILER__rpg_game_Debug /home/pedro/20222-team-6/Luta.cpp || cmake_object_order_depends_target_rpg_game
+  DEP_FILE = CMakeFiles/rpg_game.dir/Luta.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu++14
+  OBJECT_DIR = CMakeFiles/rpg_game.dir
+  OBJECT_FILE_DIR = CMakeFiles/rpg_game.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target rpg_game
@@ -99,7 +93,7 @@ build CMakeFiles/rpg_game.dir/Personagens.cpp.o: CXX_COMPILER__rpg_game_Debug /h
 #############################################
 # Link the executable rpg_game
 
-build rpg_game: CXX_EXECUTABLE_LINKER__rpg_game_Debug CMakeFiles/rpg_game.dir/main.cpp.o CMakeFiles/rpg_game.dir/Animation.cpp.o CMakeFiles/rpg_game.dir/Texture.cpp.o CMakeFiles/rpg_game.dir/LeitorDeDados.cpp.o CMakeFiles/rpg_game.dir/main_menu.cpp.o CMakeFiles/rpg_game.dir/Game.cpp.o CMakeFiles/rpg_game.dir/Personagens.cpp.o
+build rpg_game: CXX_EXECUTABLE_LINKER__rpg_game_Debug CMakeFiles/rpg_game.dir/main.cpp.o CMakeFiles/rpg_game.dir/LeitorDeDados.cpp.o CMakeFiles/rpg_game.dir/main_menu.cpp.o CMakeFiles/rpg_game.dir/Game.cpp.o CMakeFiles/rpg_game.dir/Personagens.cpp.o CMakeFiles/rpg_game.dir/Luta.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/rpg_game.dir
   POST_BUILD = :
