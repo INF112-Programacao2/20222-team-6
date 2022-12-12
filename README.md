@@ -19,4 +19,4 @@
 <p> Como um jogador, você precisa conseguir interagir com uma interface de batalha, para conseguir realizar suas ações na luta. </p>
 <p> Como um jogador, você precisa lutar contra o primeiro inimigo, a estátua Pyrr, para conseguir avançar para a próxima área. </p>
 <p> Como um jogador, você precisa alcançar a caverna, onde se encontra o Boss (chefão) do jogo, Oryx The Mad God. </p>
-	<p> Como um jogador, você precisa lutar contra o Boss para conseguir zerar o jogo. </p>
+	<p> Como um jogador, você precisa lutar contra o Boss, para conseguir zerar o jogo. </p>
