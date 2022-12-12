@@ -145,7 +145,6 @@ while(janela->pollEvent(evento))
             if(!acao->defineAtack(heroi, boss))
             {
                 running = false;
-                std::cout << "Morri" << std::endl;
             }
             initializeVidas();
             moviment = true;
@@ -196,8 +195,6 @@ void SegundaLuta::movimentEnemie(bool &moviment, bool &gameover)
     int movimento = rand()%3;
 
     int contador = 0;
-    std::cout << movimento << std::endl;
-
 
     if(movimento == 0)
     {
@@ -206,7 +203,6 @@ void SegundaLuta::movimentEnemie(bool &moviment, bool &gameover)
         gameover = true;
         moviment = false;
         contador++;
-        std::cout << "Morri" << std::endl;
         }
         else
         {

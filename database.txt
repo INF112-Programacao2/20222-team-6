@@ -1,0 +1,2 @@
+Humano
+Julius Maximus  110  120  180   human/human-front.png   human/human-front-walking-1.png human/human-front-walking-2.png human/human-back.png    human/human-back-walking-1.png  human/human-back-walking-2.png  human/human-left.png    human/human-left-walking-1.png  human/human-left-walking-2.png  human/human-right.png   human/human-right-walking-1.png human/human-right-walking-2.png

@@ -42,6 +42,8 @@ Game::~Game()
     delete this-> window;
     delete heroi;
     delete movement;
+    delete luta1;
+    delete luta2;
 }
 // Funcoes
 void Game::checkIfPressed()
@@ -204,7 +206,6 @@ void Game::update()
                 movement->backGroundS.setTexture(movement->backGroundT);
             }
         }
-
         while(lutando2)
         {
             luta2->lutaUpdate(this->window, lutando2, fim);

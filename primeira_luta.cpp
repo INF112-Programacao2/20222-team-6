@@ -37,6 +37,7 @@ PrimeiraLuta::~PrimeiraLuta()
     delete imageT;
     delete imageS;
     delete font;
+
     delete heroi;
     delete inimigo;
     delete acao;
@@ -140,7 +141,6 @@ while(janela->pollEvent(evento))
             if(!acao->defineAtack(heroi, inimigo))
             {
                 running = false;
-                std::cout << "Morri" << std::endl;
             }
             initializeVidas();
             moviment = true;
@@ -190,8 +190,6 @@ void PrimeiraLuta::movimentEnemie(bool &moviment, bool &gameover)
     int movimento = rand()%3;
 
     int contador = 0;
-    std::cout << movimento << std::endl;
-
 
     if(movimento == 0)
     {
