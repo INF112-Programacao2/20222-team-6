@@ -20,3 +20,6 @@
 <p> Como um jogador, você precisa lutar contra o primeiro inimigo, a estátua Pyrr, para conseguir avançar para a próxima área. </p>
 <p> Como um jogador, você precisa alcançar a caverna, onde se encontra o Boss (chefão) do jogo, Oryx The Mad God. </p>
 	<p> Como um jogador, você precisa lutar contra o Boss, para conseguir zerar o jogo. </p>
+
+<p> Para rodar o game, é necessario instalar a biblioteca SFML. </p>
+<p> No Linux, basta o comando: sudo apt-get install libsfml-dev </p>
